@@ -16,7 +16,7 @@ export default {
   created: function() {
     setInterval(() => {
       let formatNumber = t => t >= 10 ? t : "0" + t
-      var now = new Date();
+      var now = new Date()
       var h = now.getHours()
       var m = now.getMinutes()
       var s = now.getSeconds()

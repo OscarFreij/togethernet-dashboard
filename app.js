@@ -4,8 +4,15 @@ const logger = require('morgan')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 
+const webpack = require('webpack');
+const webpackMiddleware = require('webpack-dev-middleware');
 
-app.use(require('body-parser').urlencoded({extended: false}))
+const compiler = webpack(require('./webpack.config.js'));
+app.use(webpackMiddleware(compiler, {
+  // webpack-dev-middleware options
+}));
+
+
 app.use(cookieParser())
 app.use(session({
   secret: "Shh, its a secret! bitconect, alexander was here (kinda)",
@@ -13,14 +20,12 @@ app.use(session({
   saveUninitialized: false
 }))
 
-// logger
-app.use(logger('dev'))
-
 // Static files
 app.use(express.static('./dist'))
 
 // Routers
-app.use(require('./routers/song.js'))
-app.use(require('./routers/auth.js'))
+app.use(require('./routers/spotify.js'))
 
-module.exports = app
+app.listen(80, () => {
+  console.log('we are up!')
+})

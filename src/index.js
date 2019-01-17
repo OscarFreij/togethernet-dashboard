@@ -1,9 +1,21 @@
-import Vue from 'vue';
-import App from './vue/App.vue';
+import Vue from 'vue'
+import App from './vue/App.vue'
+import Admin from './vue/Admin.vue'
 
 const vm = new Vue({
   el: '#root',
   render: h => h(App)
 })
 
-export default vm
+// Hack of the year
+
+window.vm = vm
+
+const adminWindow = open()
+adminWindow.document.body.innerHTML = '<div id="root"></div>'
+const adminVm = new Vue({
+  el: adminWindow.document.getElementById('root'),
+  render: h => h(Admin)
+})
+
+window.addEventListener('beforeunload', event => {adminWindow.close()})

@@ -35,7 +35,6 @@ export default {
           this.songImg = response.data.item.album.images[1].url
           this.artists = response.data.item.album.artists
 
-          console.log(response.data);
           let timeLeft = !response.data.is_playing ?
           10000 : response.data.item.duration_ms - response.data.progress_ms
           setTimeout(this.getSong, timeLeft)

@@ -3,6 +3,7 @@
         <header>
             <h1>Togethernet Dashboard</h1>
         </header>
+        {{message}}
         <clock></clock>
         <spotify></spotify>
     </div>
@@ -10,7 +11,7 @@
 
 
 <style scoped>
-  
+
 </style>
 
 <script>
@@ -20,7 +21,7 @@
     export default {
         data: function () {
           return {
-
+            message: ''
           }
         },
         components: {
