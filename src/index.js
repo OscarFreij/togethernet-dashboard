@@ -1,21 +1,20 @@
-import Vue from 'vue'
-import App from './vue/App.vue'
-import Admin from './vue/Admin.vue'
+import Vue from 'vue';
+import App from './vue/App.vue';
+import Admin from './vue/Admin.vue';
 
 const vm = new Vue({
   el: '#root',
-  render: h => h(App)
-})
+  render: h => h(App),
+});
 
 // Hack of the year
+window.vm = vm;
 
-window.vm = vm
-
-const adminWindow = open()
-adminWindow.document.body.innerHTML = '<div id="root"></div>'
-const adminVm = new Vue({
+const adminWindow = open();
+adminWindow.document.body.innerHTML = '<div id="root"></div>';
+new Vue({
   el: adminWindow.document.getElementById('root'),
-  render: h => h(Admin)
-})
+  render: h => h(Admin),
+});
 
-window.addEventListener('beforeunload', event => {adminWindow.close()})
+window.addEventListener('beforeunload', () => { adminWindow.close(); });

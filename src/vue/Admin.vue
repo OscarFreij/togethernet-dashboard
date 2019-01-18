@@ -11,15 +11,15 @@
 export default {
   data: function() {
     return {
-      message: ''
+      message: '',
     }
   },
   methods: {
     postMessage: function() {
-      vm.$children[0].message = this.message
-    }
-  }
-}
+      vm.$children[0].message = this.message;
+    },
+  },
+};
 </script>
 
 <style lang="css" scoped>

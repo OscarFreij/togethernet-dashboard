@@ -15,8 +15,8 @@
 </style>
 
 <script>
-    import Clock from './Clock.vue'
-    import Spotify from './Spotify.vue'
+    import Clock from './Clock.vue';
+    import Spotify from './Spotify.vue';
 
     export default {
         data: function () {
@@ -26,7 +26,7 @@
         },
         components: {
           Clock,
-          Spotify
-        }
-    }
+          Spotify,
+        },
+    };
 </script>

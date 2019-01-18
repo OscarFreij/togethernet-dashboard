@@ -13,7 +13,7 @@
 </style>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
 
 export default {
   data: function () {
@@ -21,36 +21,36 @@ export default {
       isLoggedIn: false,
       song: '',
       artists: [],
-      songImg: ''
+      songImg: '',
     }
   },
   created: function () {
-    this.auth()
+    this.auth();
   },
   methods: {
     getSong: function () {
       axios.get('/song')
         .then((response) => {
-          this.song = response.data.item.name
-          this.songImg = response.data.item.album.images[1].url
-          this.artists = response.data.item.album.artists
+          this.song = response.data.item.name;
+          this.songImg = response.data.item.album.images[1].url;
+          this.artists = response.data.item.album.artists;
 
           let timeLeft = !response.data.is_playing ?
-          10000 : response.data.item.duration_ms - response.data.progress_ms
-          setTimeout(this.getSong, timeLeft)
+          10000 : response.data.item.duration_ms - response.data.progress_ms;
+          setTimeout(this.getSong, timeLeft);
       })
     },
     auth: function () {
       axios.get('/isauth')
       .then((response) => {
         if(response.data.isauth) {
-          this.isLoggedIn = true
-          this.getSong()
+          this.isLoggedIn = true;
+          this.getSong();
         }
       }).catch((error) => {
-        console.log(error)
-      })
+        console.log(error);
+      });
     }
   }
-}
+};
 </script>
